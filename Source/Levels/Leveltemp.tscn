@@ -1,0 +1,307 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://Source/actors/PLayer1.tscn" type="PackedScene" id=1]
+[ext_resource path="res://game assets/floor piece.png" type="Texture" id=2]
+[ext_resource path="res://game assets/floorin.png" type="Texture" id=3]
+[ext_resource path="res://game assets/plat.png" type="Texture" id=4]
+[ext_resource path="res://game assets/plat2.png" type="Texture" id=5]
+[ext_resource path="res://game assets/platb.png" type="Texture" id=6]
+[ext_resource path="res://game assets/platu.png" type="Texture" id=7]
+[ext_resource path="res://Source/Levels/Leveltemp.gd" type="Script" id=8]
+[ext_resource path="res://Source/actors/EnemyBot.tscn" type="PackedScene" id=9]
+[ext_resource path="res://game assets/anotherbg.png" type="Texture" id=10]
+[ext_resource path="res://game assets/menu.png" type="Texture" id=11]
+
+[sub_resource type="ConvexPolygonShape2D" id=1]
+points = PoolVector2Array( 0, 0, 100, 0, 100, 90, 0, 90 )
+
+[sub_resource type="ConvexPolygonShape2D" id=2]
+points = PoolVector2Array( 0, 0, 100, 0, 100, 101, 0, 101 )
+
+[sub_resource type="ConvexPolygonShape2D" id=3]
+points = PoolVector2Array( 0, 49.04, 100, 49.04, 100, 101, 0, 101 )
+
+[sub_resource type="ConvexPolygonShape2D" id=4]
+points = PoolVector2Array( 0.0800171, 0, 100, 0, 100, 51.92, 0, 51.92 )
+
+[sub_resource type="TileSet" id=5]
+0/name = "World Floor"
+0/texture = ExtResource( 3 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 100, 101 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+0/z_index = 0
+1/name = "floor piece.png 1"
+1/texture = ExtResource( 2 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 0, 0, 100, 101 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shapes = [  ]
+1/z_index = 0
+2/name = "floorin.png 2"
+2/texture = ExtResource( 3 )
+2/tex_offset = Vector2( 0, 0 )
+2/modulate = Color( 1, 1, 1, 1 )
+2/region = Rect2( 0, 0, 100, 101 )
+2/tile_mode = 0
+2/occluder_offset = Vector2( 0, 0 )
+2/navigation_offset = Vector2( 0, 0 )
+2/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+2/z_index = 0
+3/name = "plat.png 3"
+3/texture = ExtResource( 4 )
+3/tex_offset = Vector2( 0, 0 )
+3/modulate = Color( 1, 1, 1, 1 )
+3/region = Rect2( 0, 0, 100, 101 )
+3/tile_mode = 0
+3/occluder_offset = Vector2( 0, 0 )
+3/navigation_offset = Vector2( 0, 0 )
+3/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 3 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+3/z_index = 0
+4/name = "plat2.png 4"
+4/texture = ExtResource( 5 )
+4/tex_offset = Vector2( 0, 0 )
+4/modulate = Color( 1, 1, 1, 1 )
+4/region = Rect2( 0, 0, 100, 101 )
+4/tile_mode = 0
+4/occluder_offset = Vector2( 0, 0 )
+4/navigation_offset = Vector2( 0, 0 )
+4/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 4 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+4/z_index = 0
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 50, 26 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 50.3006, 26 )
+
+[node name="Leveltemp" type="Node2D"]
+position = Vector2( 1, 0 )
+script = ExtResource( 8 )
+
+[node name="background cool" type="Sprite" parent="."]
+show_behind_parent = true
+position = Vector2( 513, 299 )
+texture = ExtResource( 10 )
+
+[node name="TileMap" type="TileMap" parent="."]
+position = Vector2( -2, -1 )
+tile_set = SubResource( 5 )
+cell_size = Vector2( 100, 100 )
+cell_tile_origin = 2
+collision_layer = 8
+collision_mask = 0
+format = 1
+tile_data = PoolIntArray( 0, 0, 0, 1, 4, 0, 2, 4, 0, 3, 4, 0, 4, 4, 0, 6, 4, 0, 7, 4, 0, 8, 4, 0, 9, 4, 0, 10, 0, 0, 65536, 0, 0, 65546, 0, 0, 131072, 0, 0, 131082, 0, 0, 196608, 0, 0, 196618, 0, 0, 262144, 0, 0, 262154, 0, 0, 327680, 0, 0, 327690, 0, 0, 393216, 0, 0, 393217, 0, 0, 393218, 0, 0, 393219, 0, 0, 393220, 0, 0, 393221, 0, 0, 393222, 0, 0, 393223, 0, 0, 393224, 0, 0, 393225, 0, 0, 393226, 0, 0 )
+
+[node name="PLayer1" parent="." instance=ExtResource( 1 )]
+position = Vector2( 147, 568 )
+
+[node name="platl2" type="Sprite" parent="."]
+show_behind_parent = true
+position = Vector2( 146, 368 )
+scale = Vector2( 0.98, 1 )
+texture = ExtResource( 7 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="platl2"]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platl2/StaticBody2D"]
+show_behind_parent = true
+position = Vector2( -1.52588e-05, -24 )
+shape = SubResource( 6 )
+one_way_collision = true
+
+[node name="platr2" type="Sprite" parent="."]
+show_behind_parent = true
+position = Vector2( 950, 368 )
+scale = Vector2( 0.98, 1 )
+texture = ExtResource( 7 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="platr2"]
+position = Vector2( -137.755, 0 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platr2/StaticBody2D"]
+show_behind_parent = true
+position = Vector2( 136.735, -24 )
+shape = SubResource( 6 )
+one_way_collision = true
+
+[node name="platl1" type="Sprite" parent="."]
+show_behind_parent = true
+light_mask = 0
+position = Vector2( 147, 451 )
+scale = Vector2( 0.98, 1 )
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="platl1"]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platl1/StaticBody2D"]
+position = Vector2( -1.52588e-05, 24 )
+shape = SubResource( 7 )
+one_way_collision = true
+
+[node name="platl3" type="Sprite" parent="."]
+show_behind_parent = true
+light_mask = 0
+position = Vector2( 142, 207 )
+scale = Vector2( 0.98, 1 )
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="platl3"]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platl3/StaticBody2D"]
+position = Vector2( -1.52588e-05, 24 )
+shape = SubResource( 7 )
+one_way_collision = true
+
+[node name="platbm" type="Sprite" parent="."]
+show_behind_parent = true
+light_mask = 0
+position = Vector2( 548.5, 451 )
+scale = Vector2( 4.99, 1 )
+texture = ExtResource( 6 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="platbm"]
+position = Vector2( -3.06122, 0 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platbm/StaticBody2D"]
+position = Vector2( 3.16142, 24 )
+shape = SubResource( 7 )
+one_way_collision = true
+
+[node name="platbm2" type="Sprite" parent="."]
+show_behind_parent = true
+light_mask = 0
+position = Vector2( 550, 322 )
+scale = Vector2( 4.99, 1 )
+texture = ExtResource( 6 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="platbm2"]
+position = Vector2( -3.06122, 0 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platbm2/StaticBody2D"]
+position = Vector2( 3.16142, 24 )
+shape = SubResource( 7 )
+one_way_collision = true
+
+[node name="platbm3" type="Sprite" parent="."]
+show_behind_parent = true
+light_mask = 0
+position = Vector2( 551, 205 )
+scale = Vector2( 4.99, 1 )
+texture = ExtResource( 6 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="platbm3"]
+position = Vector2( -3.06122, 0 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platbm3/StaticBody2D"]
+position = Vector2( 3.16142, 24 )
+shape = SubResource( 7 )
+one_way_collision = true
+
+[node name="platr1" type="Sprite" parent="."]
+show_behind_parent = true
+light_mask = 0
+position = Vector2( 951, 451 )
+scale = Vector2( 0.98, 1 )
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="platr1"]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platr1/StaticBody2D"]
+position = Vector2( -1.52588e-05, 24 )
+shape = SubResource( 7 )
+one_way_collision = true
+
+[node name="platr3" type="Sprite" parent="."]
+show_behind_parent = true
+light_mask = 0
+position = Vector2( 949, 205 )
+scale = Vector2( 0.98, 1 )
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="platr3"]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platr3/StaticBody2D"]
+position = Vector2( -1.52588e-05, 24 )
+shape = SubResource( 7 )
+one_way_collision = true
+
+[node name="enemy2" parent="." instance=ExtResource( 9 )]
+position = Vector2( 276, -178 )
+
+[node name="enemy" parent="." instance=ExtResource( 9 )]
+position = Vector2( 401, -220 )
+
+[node name="enemy3" parent="." instance=ExtResource( 9 )]
+position = Vector2( 401, -321 )
+
+[node name="TextureButton" type="TextureButton" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+texture_normal = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="TextureButton" to="." method="_on_TextureButton_pressed"]

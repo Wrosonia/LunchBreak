@@ -1,0 +1,324 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://game assets/floor piece.png" type="Texture" id=1]
+[ext_resource path="res://game assets/pixelCake.png" type="Texture" id=2]
+[ext_resource path="res://game assets/pixelHotdog.png" type="Texture" id=3]
+[ext_resource path="res://Source/actors/EnemyBot.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Source/actors/PLayer1.tscn" type="PackedScene" id=5]
+[ext_resource path="res://game assets/altfloord.png" type="Texture" id=6]
+[ext_resource path="res://game assets/platfull.png" type="Texture" id=7]
+[ext_resource path="res://game assets/coolbg.png" type="Texture" id=8]
+[ext_resource path="res://Source/Levels/Cakey.gd" type="Script" id=9]
+[ext_resource path="res://Source/Levels/demo piece.gd" type="Script" id=10]
+[ext_resource path="res://game assets/menu.png" type="Texture" id=11]
+
+[sub_resource type="ConvexPolygonShape2D" id=1]
+points = PoolVector2Array( 0, 0, 100, 0, 100, 101, 0, 101 )
+
+[sub_resource type="ConvexPolygonShape2D" id=3]
+points = PoolVector2Array( 100, 101, 0, 101, 0, 0, 100, 0 )
+
+[sub_resource type="TileSet" id=2]
+0/name = "floor piece.png 0"
+0/texture = ExtResource( 1 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 100, 101 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+0/z_index = 0
+1/name = "platfull.png 1"
+1/texture = ExtResource( 7 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 0, 0, 100, 101 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 3 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+1/z_index = 0
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 51.2953, 25 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 36, 32 )
+
+[node name="demo piece" type="Node2D"]
+position = Vector2( 23, 0 )
+script = ExtResource( 10 )
+
+[node name="Sprite" type="Sprite" parent="."]
+show_behind_parent = true
+light_mask = 4
+position = Vector2( 507, 300 )
+texture = ExtResource( 8 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource( 2 )
+cell_size = Vector2( 100, 100 )
+occluder_light_mask = 5
+format = 1
+tile_data = PoolIntArray( 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 6, 1, 0, 7, 1, 0, 8, 1, 0, 9, 1, 0, 10, 1, 0, 65536, 1, 0, 65546, 1, 0, 131072, 1, 0, 131082, 1, 0, 196608, 1, 0, 196618, 1, 0, 262144, 1, 0, 262154, 1, 0, 327680, 1, 0, 327690, 1, 0, 393216, 1, 0, 393217, 1, 0, 393218, 1, 0, 393219, 1, 0, 393220, 1, 0, 393221, 1, 0, 393222, 1, 0, 393223, 1, 0, 393224, 1, 0, 393225, 1, 0, 393226, 1, 0 )
+
+[node name="enemy" parent="." instance=ExtResource( 4 )]
+position = Vector2( 357, -275 )
+
+[node name="enemy2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 708, -121 )
+
+[node name="PLayer1" parent="." instance=ExtResource( 5 )]
+position = Vector2( 181, 573 )
+Jump_FORCE = 1000
+
+[node name="lev1u" type="Sprite" parent="."]
+show_behind_parent = true
+position = Vector2( 94.5, 446 )
+scale = Vector2( 1.93, 1 )
+texture = ExtResource( 6 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="lev1u"]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="lev1u/StaticBody2D"]
+position = Vector2( -1.29534, 25 )
+shape = SubResource( 4 )
+one_way_collision = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="corner" type="Sprite" parent="."]
+show_behind_parent = true
+position = Vector2( 653.687, 102 )
+scale = Vector2( 1.08625, 1 )
+texture = ExtResource( 6 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="corner"]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="corner/StaticBody2D"]
+position = Vector2( -1.29534, 25 )
+shape = SubResource( 4 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="corner2" type="Sprite" parent="."]
+show_behind_parent = true
+position = Vector2( 832, 470 )
+scale = Vector2( 0.533124, 1 )
+texture = ExtResource( 6 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="corner2"]
+position = Vector2( 1.87561, 0.999969 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="corner2/StaticBody2D"]
+position = Vector2( -1.29534, 25 )
+shape = SubResource( 4 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="lev1u2" type="Sprite" parent="."]
+show_behind_parent = true
+position = Vector2( 402, 396 )
+scale = Vector2( 1.095, 1 )
+texture = ExtResource( 6 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="lev1u2"]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="lev1u2/StaticBody2D"]
+position = Vector2( -0.228352, 24 )
+shape = SubResource( 4 )
+one_way_collision = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="lev1u4" type="Sprite" parent="."]
+show_behind_parent = true
+position = Vector2( 708, 300 )
+scale = Vector2( 1.095, 1 )
+texture = ExtResource( 6 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="lev1u4"]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="lev1u4/StaticBody2D"]
+position = Vector2( -0.228352, 24 )
+shape = SubResource( 4 )
+one_way_collision = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="lev1u3" type="Sprite" parent="."]
+show_behind_parent = true
+position = Vector2( 502, 396 )
+scale = Vector2( 1.095, 1 )
+texture = ExtResource( 6 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="lev1u3"]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="lev1u3/StaticBody2D"]
+position = Vector2( -0.228352, 24 )
+shape = SubResource( 4 )
+one_way_collision = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="leftup" type="Sprite" parent="."]
+show_behind_parent = true
+position = Vector2( 141.625, 246 )
+scale = Vector2( 2.7675, 1 )
+texture = ExtResource( 6 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="leftup"]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="leftup/StaticBody2D"]
+position = Vector2( -0.228352, 24 )
+shape = SubResource( 4 )
+one_way_collision = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="leftup2" type="Sprite" parent="."]
+show_behind_parent = true
+position = Vector2( 884, 300 )
+scale = Vector2( 2.7675, 1 )
+texture = ExtResource( 6 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="leftup2"]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="leftup2/StaticBody2D"]
+position = Vector2( -0.228352, 24 )
+shape = SubResource( 4 )
+one_way_collision = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="bottomcorner" type="Sprite" parent="."]
+show_behind_parent = true
+position = Vector2( 915.344, 420 )
+scale = Vector2( 2.14688, 1 )
+texture = ExtResource( 6 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="bottomcorner"]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bottomcorner/StaticBody2D"]
+position = Vector2( -0.228352, 24 )
+shape = SubResource( 4 )
+one_way_collision = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Cakey" type="Area2D" parent="."]
+position = Vector2( 384, 370 )
+script = ExtResource( 9 )
+
+[node name="Sprite" type="Sprite" parent="Cakey"]
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cakey"]
+position = Vector2( 0, -5 )
+shape = SubResource( 5 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Cakey2" type="Area2D" parent="."]
+position = Vector2( 763, 190 )
+script = ExtResource( 9 )
+
+[node name="Sprite" type="Sprite" parent="Cakey2"]
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cakey2"]
+position = Vector2( 0, -5 )
+shape = SubResource( 5 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Weenie1" type="Area2D" parent="."]
+position = Vector2( 141, 270 )
+script = ExtResource( 9 )
+
+[node name="Sprite" type="Sprite" parent="Weenie1"]
+position = Vector2( 18, 150 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Weenie1"]
+position = Vector2( 18, 150 )
+shape = SubResource( 5 )
+
+[node name="Weenie2" type="Area2D" parent="."]
+position = Vector2( 915, 420 )
+script = ExtResource( 9 )
+
+[node name="Sprite" type="Sprite" parent="Weenie2"]
+position = Vector2( 18, 150 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Weenie2"]
+position = Vector2( 18, 150 )
+shape = SubResource( 5 )
+
+[node name="MenuScreen" type="TextureButton" parent="."]
+margin_left = 3.0
+margin_top = -19.0
+margin_right = 265.0
+margin_bottom = 87.0
+texture_normal = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="body_entered" from="Cakey" to="Cakey" method="_on_Cakey_body_entered"]
+[connection signal="body_entered" from="Cakey" to="PLayer1" method="_on_Cakey_body_entered"]
+[connection signal="body_entered" from="Cakey2" to="Cakey2" method="_on_Cakey_body_entered"]
+[connection signal="body_entered" from="Cakey2" to="PLayer1" method="_on_Cakey_body_entered"]
+[connection signal="body_entered" from="Weenie1" to="Weenie1" method="_on_Cakey_body_entered"]
+[connection signal="body_entered" from="Weenie1" to="PLayer1" method="_on_Cakey_body_entered"]
+[connection signal="body_entered" from="Weenie2" to="Weenie2" method="_on_Cakey_body_entered"]
+[connection signal="body_entered" from="Weenie2" to="PLayer1" method="_on_Cakey_body_entered"]
+[connection signal="pressed" from="MenuScreen" to="." method="_on_MenuScreen_pressed"]

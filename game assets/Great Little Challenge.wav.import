@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Great Little Challenge.wav-ba98ce660c676f76597d03ec16878366.sample"
+
+[deps]
+
+source_file="res://game assets/Great Little Challenge.wav"
+dest_files=[ "res://.import/Great Little Challenge.wav-ba98ce660c676f76597d03ec16878366.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
